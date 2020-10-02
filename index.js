@@ -17,13 +17,13 @@ client.on("guildMemberAdd", (member) => {
 
   welcomeChannel.send(`<@${newUser.id}> ${welcomeChannelComment}\n`);
 
-  member.addRole(guild.roles.find(role => role.name == "게스트")); // 역할부여
+  member.addRole(guild.roles.find(role => role.name == "게스트"));
 });
 
 client.on("guildMemberRemove", (member) => {
   const guild = member.guild;
   const deleteUser = member.user;
-  const byeChannel = guild.channels.find(channel => channel.name == byeChannelName); //인사
+  const byeChannel = guild.channels.find(channel => channel.name == byeChannelName);
 
   byeChannel.send(`<@${deleteUser.id}> ${byeChannelComment}\n`);
 });
@@ -32,8 +32,28 @@ client.on('message', (message) => {
   if(message.author.bot) return;
 
   if(message.content == 'ping') {
-    return message.reply('pong'); //말 주고받기
+    return message.reply('pong');
   }
+
+  if(message.content == 'embed') {
+    let img = 'https://cdn.discordapp.com/attachments/761621870893858846/761653758248747019/Nom-Nom2.png';
+    let embed = new Discord.RichEmbed()
+      .setTitle('타이틀')
+      .setURL('http://www.naver.com')
+      .setAuthor('이으무', img, 'http://www.naver.com')
+      .setThumbnail(img)
+      .addBlankField()
+      .addField('Inline field title', 'Some value here')
+      .addField('Inline field title', 'Some value here', true)
+      .addField('Inline field title', 'Some value here', true)
+      .addField('Inline field title', 'Some value here', true)
+      .addField('Inline field title', 'Some value here1\nSome value here2\nSome value here3\n')
+      .addBlankField()
+      .setTimestamp()
+      .setFooter('이으묵이 만듬', img)
+
+    message.channel.send(embed)
+  } 
 
   if(message.content.startsWith('!전체공지')) {
     if(checkPermission(message)) return
@@ -59,5 +79,17 @@ function checkPermission(message) {
     return false;
   }
 }
+
+function changeCommandStringLength(str, limitLen = 8) {
+  let tmp = str;
+  limitLen -= tmp.length;
+
+  for(let i=0;i<limitLen;i++) {
+      tmp += ' ';
+  }
+
+  return tmp;
+}
+
 
 client.login(token);
