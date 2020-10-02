@@ -43,7 +43,7 @@ client.on('message', (message) => {
       .setAuthor('이으무', img, 'http://www.naver.com')
       .setThumbnail(img)
       .addBlankField()
-      .addField('Inline field title', 'Some value here')
+      .addField('!전체공지', '[관리자]DM으로 서버 인원 전체에게 공지를 보냅니다')
       .addField('Inline field title', 'Some value here', true)
       .addField('Inline field title', 'Some value here', true)
       .addField('Inline field title', 'Some value here', true)
