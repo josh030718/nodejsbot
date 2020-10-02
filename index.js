@@ -55,10 +55,10 @@ client.on('message', (message) => {
     message.channel.send(embed)
   } 
 
-  if(message.content.startsWith('!전체공지')) {
+  if(message.content.startsWith('~전체공지')) {
     if(checkPermission(message)) return
     if(message.member != null) { // 채널에서 공지 쓸 때
-      let contents = message.content.slice('!전체공지'.length);
+      let contents = message.content.slice('~전체공지'.length);
       message.member.guild.members.array().forEach(x => {
         if(x.user.bot) return;
         x.user.send(`<@${message.author.id}> ${contents}`);
@@ -69,7 +69,7 @@ client.on('message', (message) => {
       return message.reply('채널에서 실행해주세요.');
     }
   }
-  if(message.content.startsWith('!청소')) {
+  if(message.content.startsWith('~청소')) {
     if(checkPermission(message)) return
 
     var clearLine = message.content.slice('!청소 '.length);
