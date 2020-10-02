@@ -46,12 +46,18 @@ client.on('message', (message) => {
       .addBlankField()
       .addField('~전체공지', '[관리자]DM으로 서버 인원 전체에게 공지를 보냅니다')
       .addField('~청소', '[관리자]1~100까지의 숫자만큼 메세지를 지웁니다')
+      .addField('~초대코드', '봇의 초대코드를 표기합니다')
       .addBlankField()
       .setTimestamp()
       .setFooter('이으묵이 만듬', img)
 
     message.channel.send(embed)
-  } 
+  } else if(message.content == '~초대코드') {
+    message.guild.channels.get(message.channel.id).createInvite({maxAge: 0}) // maxAge: 0은 무한이라는 의미, maxAge부분을 지우면 24시간으로 설정됨
+      .then(invite => {
+        message.channel.send(invite.url)
+      });
+  }
 
   if(message.content.startsWith('~전체공지')) {
     if(checkPermission(message)) return
