@@ -1,6 +1,8 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const token = process.argv.length == 2 ? process.env.token : '';
+const moment = require("moment");
+require("moment-duration-format");
 const welcomeChannelName = "안녕하세요";
 const byeChannelName = "안녕히가세요";
 const welcomeChannelComment = "어서오세요.";
@@ -36,6 +38,37 @@ client.on('message', (message) => {
     return message.reply('pong');
   }
 
+  if(message.content == '~서버상태') {
+    let embed = new Discord.RichEmbed()
+    let img = 'https://cdn.discordapp.com/icons/419671192857739264/6dccc22df4cb0051b50548627f36c09b.webp?size=256';
+    var duration = moment.duration(client.uptime).format(" D [일], H [시간], m [분], s [초]");
+    embed.setColor('#186de6')
+    embed.setAuthor('server info of 이으무 BOT', img)
+    embed.setFooter(`이으무 BOT ❤️`)
+    embed.addBlankField()
+    embed.addField('RAM usage',    `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`, true);
+    embed.addField('running time', `${duration}`, true);
+    embed.addField('user',         `${client.users.size.toLocaleString()}`, true);
+    embed.addField('server',       `${client.guilds.size.toLocaleString()}`, true);
+    // embed.addField('channel',      `${client.channels.size.toLocaleString()}`, true);
+    embed.addField('Discord.js',   `v${Discord.version}`, true);
+    embed.addField('Node',         `${process.version}`, true);
+    
+    let arr = client.guilds.array();
+    let list = '';
+    list = `\`\`\`css\n`;
+    
+    for(let i=0;i<arr.length;i++) {
+      // list += `${arr[i].name} - ${arr[i].id}\n`
+      list += `${arr[i].name}\n`
+    }
+    list += `\`\`\`\n`
+    embed.addField('list:',        `${list}`);
+
+    embed.setTimestamp()
+    message.channel.send(embed);
+  }
+
   if(message.content == 'embed') {
     let img = 'https://cdn.discordapp.com/attachments/761621870893858846/761653758248747019/Nom-Nom2.png';
     let embed = new Discord.RichEmbed()
@@ -47,6 +80,7 @@ client.on('message', (message) => {
       .addField('~전체공지', '[관리자]DM으로 서버 인원 전체에게 공지를 보냅니다')
       .addField('~청소', '[관리자]1~100까지의 숫자만큼 메세지를 지웁니다')
       .addField('~초대코드', '봇이 초대코드를 표기합니다')
+      .addField('~서버상태', '봇이 서버상태를 표기합니다')
       .addBlankField()
       .setTimestamp()
       .setFooter('이으묵이 만듬', img)
