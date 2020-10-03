@@ -8,7 +8,7 @@ const byeChannelComment = "안녕히가세요.";
 
 client.on('ready', () => {
   console.log('켰다.');
-  client.user.setPresence({ game: { name: '뒹굴뒹굴' }, status: 'online' })
+  client.user.setPresence({ game: { name: '~help | 뒹굴뒹굴' }, status: 'online' })
 });
 
 client.on("guildMemberAdd", (member) => {
@@ -36,12 +36,11 @@ client.on('message', (message) => {
     return message.reply('pong');
   }
 
-  if(message.content == 'embed') {
+  if(message.content == '~help') {
     let img = 'https://cdn.discordapp.com/attachments/761621870893858846/761653758248747019/Nom-Nom2.png';
     let embed = new Discord.RichEmbed()
-      .setTitle('타이틀')
-      .setURL('http://www.naver.com')
-      .setAuthor('이으무', img, 'http://www.naver.com')
+      .setTitle('이으무')
+      .setAuthor('make by 이으무', img)
       .setThumbnail(img)
       .addBlankField()
       .addField('~전체공지', '[관리자]DM으로 서버 인원 전체에게 공지를 보냅니다')
