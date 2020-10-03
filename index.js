@@ -77,7 +77,7 @@ client.on('message', (message) => {
     if(checkPermission(message)) return
 
     var clearLine = message.content.slice('!청소 '.length);
-    var isNum = ~isNaN(clearLine)
+    var isNum = !isNaN(clearLine)
 
     if(isNum && (clearLine <= 0 || 100 < clearLine)) {
       message.channel.send("1부터 100까지의 숫자만 입력해주세요.")
