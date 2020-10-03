@@ -39,7 +39,7 @@ client.on('message', (message) => {
   if(message.content == '~help') {
     let img = 'https://cdn.discordapp.com/attachments/761621870893858846/761653758248747019/Nom-Nom2.png';
     let embed = new Discord.RichEmbed()
-      .setTitle('이으무')
+      .setTitle('내 이름은 이으무')
       .setAuthor('make by 이으무', img)
       .setThumbnail(img)
       .addBlankField()
