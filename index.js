@@ -46,7 +46,7 @@ client.on('message', (message) => {
       .addBlankField()
       .addField('~전체공지', '[관리자]DM으로 서버 인원 전체에게 공지를 보냅니다')
       .addField('~청소', '[관리자]1~100까지의 숫자만큼 메세지를 지웁니다')
-      .addField('~초대코드', '봇의 초대코드를 표기합니다')
+      .addField('~초대코드', '봇이 초대코드를 표기합니다')
       .addBlankField()
       .setTimestamp()
       .setFooter('이으묵이 만듬', img)
