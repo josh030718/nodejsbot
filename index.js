@@ -40,7 +40,7 @@ client.on('message', (message) => {
     let img = 'https://cdn.discordapp.com/attachments/761621870893858846/761653758248747019/Nom-Nom2.png';
     let embed = new Discord.RichEmbed()
       .setTitle('내 이름은 이으무')
-      .setAuthor('make by 이으무', img)
+      .setAuthor('뭘봐?', img)
       .setThumbnail(img)
       .addBlankField()
       .addField('~전체공지', '[관리자]DM으로 서버 인원 전체에게 공지를 보냅니다')
@@ -48,7 +48,7 @@ client.on('message', (message) => {
       .addField('~초대코드', '봇이 초대코드를 표기합니다')
       .addBlankField()
       .setTimestamp()
-      .setFooter('이으묵이 만듬', img)
+      .setFooter('made by 이으묵', img)
 
     message.channel.send(embed)
   } else if(message.content == '~초대코드') {
