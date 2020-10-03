@@ -77,12 +77,12 @@ client.on('message', (message) => {
     if(checkPermission(message)) return
 
     var clearLine = message.content.slice('~청소 '.length);
-    var isNum = !isNaN(clearLine)
+    var isNum = ~isNaN(clearLine)
 
     if(isNum && (clearLine <= 0 || 100 < clearLine)) {
       message.channel.send("1부터 100까지의 숫자만 입력해주세요.")
       return;
-    } else if(!isNum) { // c @나긋해 3
+    } else if(~isNum) { // c @나긋해 3
       if(message.content.split('<@').length == 2) {
         if(isNaN(message.content.split(' ')[2])) return;
 
@@ -97,7 +97,7 @@ client.on('message', (message) => {
               msg.delete();
               ++_cnt;
             }
-            return !(_cnt == count);
+            return ~(_cnt == count);
           });
         });
       }
