@@ -40,7 +40,7 @@ client.on('message', (message) => {
     let img = 'https://cdn.discordapp.com/attachments/761621870893858846/761653758248747019/Nom-Nom2.png';
     let embed = new Discord.RichEmbed()
       .setTitle('내 이름은 이으무')
-      .setAuthor('뭘봐?', img)
+      .setAuthor('뭘봐? 이씨', img)
       .setThumbnail(img)
       .addBlankField()
       .addField('~전체공지', '[관리자]DM으로 서버 인원 전체에게 공지를 보냅니다')
