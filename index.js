@@ -40,15 +40,15 @@ client.on('message', (message) => {
     let img = 'https://cdn.discordapp.com/attachments/761621870893858846/761653758248747019/Nom-Nom2.png';
     let embed = new Discord.RichEmbed()
       .setTitle('내 이름은 이으무')
-      .setAuthor('뭘봐? 이씨', img)
+      .setAuthor('오쪼라구요', img)
       .setThumbnail(img)
       .addBlankField()
-      .addField('~전체공지', '[관리자]DM으로 서버 인원 전체에게 공지를 보냅니다')
-      .addField('~청소', '[관리자]1~100까지의 숫자만큼 메세지를 지웁니다')
-      .addField('~초대코드', '봇이 초대코드를 표기합니다')
+      .addField('~n', '[관리자]DM으로 서버 인원 전체에게 공지를 보냅니다')
+      .addField('~c', '[관리자]1~100까지의 숫자만큼 메세지를 지웁니다')
+      .addField('~i', '봇이 초대코드를 표기합니다')
       .addBlankField()
       .setTimestamp()
-      .setFooter('made by 이으묵', img)
+      .setFooter('made by 와장창', img)
 
     message.channel.send(embed)
   } else if(message.content == '~초대코드') {
@@ -58,10 +58,10 @@ client.on('message', (message) => {
       });
   }
 
-  if(message.content.startsWith('~전체공지')) {
+  if(message.content.startsWith('~n')) {
     if(checkPermission(message)) return
     if(message.member != null) { // 채널에서 공지 쓸 때
-      let contents = message.content.slice('~전체공지'.length);
+      let contents = message.content.slice('~n'.length);
       message.member.guild.members.array().forEach(x => {
         if(x.user.bot) return;
         x.user.send(`<@${message.author.id}> ${contents}`);
@@ -72,10 +72,10 @@ client.on('message', (message) => {
       return message.reply('채널에서 실행해주세요.');
     }
   }
-  if(message.content.startsWith('~청소')) {
+  if(message.content.startsWith('~c')) {
     if(checkPermission(message)) return
 
-    var clearLine = message.content.slice('~청소 '.length);
+    var clearLine = message.content.slice('~c '.length);
     var isNum = !isNaN(clearLine)
 
     if(isNum && (clearLine <= 0 || 100 < clearLine)) {
