@@ -8,7 +8,7 @@ const byeChannelComment = "안녕히가세요.";
 
 client.on('ready', () => {
   console.log('켰다.');
-  client.user.setPresence({ game: { name: '~help | 뒹굴뒹굴' }, status: 'online' })
+  client.user.setPresence({ game: { name: '~help | 너 생각' }, status: 'online' })
 });
 
 client.on("guildMemberAdd", (member) => {
@@ -51,7 +51,7 @@ client.on('message', (message) => {
       .setFooter('made by 와장창', img)
 
     message.channel.send(embed)
-  } else if(message.content == '~초대코드') {
+  } else if(message.content == '~i') {
     message.guild.channels.get(message.channel.id).createInvite({maxAge: 0}) // maxAge: 0은 무한이라는 의미, maxAge부분을 지우면 24시간으로 설정됨
       .then(invite => {
         message.channel.send(invite.url)
